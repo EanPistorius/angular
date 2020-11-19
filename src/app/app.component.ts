@@ -12,6 +12,9 @@ export class AppComponent {
   constructor(public api: ApirequestsService){
   }
 
+  onUpload() {
+    console.log('HERE');
+  }
 
   clickEvent(){
     this.api.sendTestGetRequest();
