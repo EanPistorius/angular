@@ -17,8 +17,12 @@ export class ApirequestsService {
 
   }
 
-  sendInfo(newInfo: any): Observable<any>{
-    return this.httpClient.post<any>(this.urlAPI+'/newInfo', {newInfo});
+  signIn(cred: any): Observable<any>{
+    return this.httpClient.post<any>(this.urlAPI+'/api/login', {cred})
+  }
+
+  sendInfo(info: any): Observable<any>{
+    return this.httpClient.post<any>(this.urlAPI+'/newInfo', {info});
   }
 
 }

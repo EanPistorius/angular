@@ -12,10 +12,18 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  fileData: any = null;
+
+  fileProgress(fileInput: any) {
+      this.fileData = <File>fileInput.target.files[0];
+  }
+
   onUpload() {
-      //this.api.sendTestGetRequest().subscribe((res) => {
-       // console.log(res);
-      //});
+    /*
+      this.api.sendTestGetRequest().subscribe((res) => {
+       console.log(res);
+      });
 
     const info = {
         firstName: "df",
@@ -24,9 +32,12 @@ export class HomepageComponent implements OnInit {
         phoneNumber: "06fff14633799",
         address: ["23 Gerrffit Maritz", "Dassierand", "Potchefffstroom"]
 
-    }
+    } */
+    console.log('HERE');
+    const formData = new FormData();
+    formData.append('file', this.fileData);
 
-    this.api.sendInfo(info).subscribe(res => {
+    this.api.sendInfo(formData).subscribe(res => {
         console.log(res);
     },
     err => {
@@ -35,4 +46,5 @@ export class HomepageComponent implements OnInit {
 
 
     }
+
 }

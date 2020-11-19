@@ -9,12 +9,10 @@ import { ApirequestsService } from './services/apirequests.service';
 export class AppComponent {
   title = 'angular';
   msg!: string;
+
   constructor(public api: ApirequestsService){
   }
 
-  onUpload() {
-    console.log('HERE');
-  }
 
   clickEvent(){
     this.api.sendTestGetRequest();
