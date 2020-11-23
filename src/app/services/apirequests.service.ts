@@ -9,7 +9,8 @@ import { Observable } from 'rxjs';
 export class ApirequestsService {
 
   constructor(private http: HttpClient) { }
-
+  // Cloud hosted API URL
+  // private urlAPI = 'http://apiproject2-env.eba-vfyzbtbz.eu-west-2.elasticbeanstalk.com/';
   private urlAPI = 'http://localhost:8000';
 
   theFile: any;
