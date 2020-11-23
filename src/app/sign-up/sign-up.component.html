@@ -1,7 +1,7 @@
 <div fxLayoutAlign="center center" fxFlexFill class="main-div bg-dark text-white">
   <mat-card fxflex="25">
-    <mat-toolbar class="p-3 mb-2 bg-danger text-white">API Login</mat-toolbar>
-    <form fxLayoutAlign="stretch"  fxLayout="column" class="login-form" [formGroup]="formGroup" (ngSubmit)="login()">
+    <mat-toolbar class="p-3 mb-2 bg-success text-white">Sign Up</mat-toolbar>
+    <form fxLayoutAlign="stretch"  fxLayout="column" class="login-form" [formGroup]="formGroup" (ngSubmit)="submit()">
       <mat-form-field>
         <input matInput placeholder="username" formControlName ="username">
       </mat-form-field>
@@ -9,7 +9,7 @@
       <mat-form-field>
         <input matInput type="password" placeholder="password" formControlName ="password" >
       </mat-form-field>
-      <button mat-button type="submit" class="bg-danger text-white">login<br></button>
+      <button mat-button type="submit" class="bg-success text-white" (click)="submit()">sign up<br></button>
     </form>
 
   </mat-card>

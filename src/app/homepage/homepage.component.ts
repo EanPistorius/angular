@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ApirequestsService } from '../services/apirequests.service';
-
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
@@ -8,43 +7,24 @@ import { ApirequestsService } from '../services/apirequests.service';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor(private api: ApirequestsService) { }
+  constructor(private api: ApirequestsService) {
+   }
 
   ngOnInit(): void {
   }
 
-  fileData: any = null;
-
-  fileProgress(fileInput: any) {
-      this.fileData = <File>fileInput.target.files[0];
+  private file: any;
+  onFileChange(event: any) {
+    if (event.target.files.length > 0) {
+      this.file = event.target.files[0];
+      console.log(this.file);
+    }
   }
 
-  onUpload() {
-    /*
-      this.api.sendTestGetRequest().subscribe((res) => {
-       console.log(res);
-      });
+  onUpload(){
+   this.api.sendInfo(this.file).subscribe(res =>{
+    alert('Uploaded Successfully.');
+   })
 
-    const info = {
-        firstName: "df",
-        lastName: "ff",
-        email: "gcwehmffeyer@gmail.com",
-        phoneNumber: "06fff14633799",
-        address: ["23 Gerrffit Maritz", "Dassierand", "Potchefffstroom"]
-
-    } */
-    console.log('HERE');
-    const formData = new FormData();
-    formData.append('file', this.fileData);
-
-    this.api.sendInfo(formData).subscribe(res => {
-        console.log(res);
-    },
-    err => {
-      console.log(err);
-    })
-
-
-    }
-
+  }
 }

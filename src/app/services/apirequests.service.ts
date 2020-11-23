@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -7,22 +8,31 @@ import { Observable } from 'rxjs';
 })
 export class ApirequestsService {
 
-  constructor(private httpClient: HttpClient) { }
-
+  constructor(private http: HttpClient) { }
 
   private urlAPI = 'http://localhost:8000';
 
-  sendTestGetRequest(): Observable<any> {
-    return this.httpClient.get<any>(this.urlAPI+'/info');
-
+  theFile: any;
+  sendInfo(file: FileList): Observable<any> {
+    let myData = new FormData();
+    this.theFile = file;
+    myData.append(`file`, this.theFile, this.theFile.name)
+    return this.http.post<any>(this.urlAPI+'/uploadFile', myData);
+  }
+  getUsers(formData: FormData): Observable<any>{
+    return this.http.get('/users')
   }
 
-  signIn(cred: any): Observable<any>{
-    return this.httpClient.post<any>(this.urlAPI+'/api/login', {cred})
+  signUp(cred: any): Observable<any>{
+    return this.http.post<any>(this.urlAPI+'/signUp', cred)
   }
 
-  sendInfo(info: any): Observable<any>{
-    return this.httpClient.post<any>(this.urlAPI+'/newInfo', {info});
+  login(cred: any): Observable<any>{
+    return this.http.post<any>(this.urlAPI + '/login', {cred});
   }
+
+  /* sendInfo(info: any): Observable<any>{
+    return this.http.post<any>(this.urlAPI+'/newInfo', {info});
+  } */
 
 }

@@ -12,13 +12,6 @@ export class AppComponent {
 
   constructor(public api: ApirequestsService){
   }
-
-
-  clickEvent(){
-    this.api.sendTestGetRequest();
-    this.msg = 'Button is Clicked';
-    return this.msg;
-  }
 }
 
 
